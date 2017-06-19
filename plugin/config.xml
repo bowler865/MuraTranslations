@@ -35,6 +35,19 @@
 		<optionlist>True^False</optionlist>
 		<optionlabellist></optionlabellist>
 	</setting>
+	<setting>
+		<name>liveOnly</name>
+		<label>Live Sites Only</label>
+		<hint>Only list live sites on the frontend selection menu/list</hint>
+		<type>selectbox</type>
+		<required>true</required>
+		<validation></validation>
+		<regex></regex>
+		<message></message>
+		<defaultvalue>True</defaultvalue>
+		<optionlist>True^False</optionlist>
+		<optionlabellist></optionlabellist>
+	</setting>
 </settings>
 <eventHandlers>
 	<eventHandler event="onContentEdit" scriptfile="onContentEdit.cfm"/>

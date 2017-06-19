@@ -33,6 +33,7 @@
 
 <cffunction name="getAssignedSites" returntype="query" output="false">
 <cfargument name="siteid" required="true" default="">
+<cfargument name="liveOnly" required="false" default="false">
 	<cfset var rs=""/>
 	<cfquery name="rs" datasource="#variables.globalConfig.getDatasource()#" username="#variables.globalConfig.getDBUsername()#" password="#variables.globalConfig.getDBPassword()#">
 	select tcontent.siteID,tcontent.moduleID, tsettings.siteLocale,tsettings.site, tsettings.site, #variables.translationkeys#.name alias, #variables.translationkeys#.selectorlabel
@@ -42,6 +43,9 @@
 	<cfif len(arguments.siteid)>
 		and tcontent.siteid != <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.siteid#">
 	</cfif>
+    <cfif arguments.liveOnly>
+    	 AND tsettings.enableLockdown != 'development'
+    </cfif>
 	order by #variables.translationkeys#.name
 	</cfquery>
 	<cfreturn rs>

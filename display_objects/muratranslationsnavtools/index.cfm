@@ -13,7 +13,7 @@
   pluginpath = m.globalConfig('context') & '/plugins/MuraTranslations';
 	pluginConfig = m.getPlugin('MuraTranslations');
 	translationManager = CreateObject('component', 'MuraTranslations.cfcs.translationManager').init(m.globalConfig(),pluginConfig);
-	rsLocales = translationManager.getAssignedSites(m.siteConfig('siteid'));
+	rsLocales = translationManager.getAssignedSites(siteid=m.siteConfig('siteid'),liveOnly=pluginConfig.getSetting('liveOnly'));
 </cfscript>
 <cfoutput>
   <cfif rsLocales.recordcount>
